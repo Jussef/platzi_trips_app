@@ -1,18 +1,19 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'platzi_trips.dart';
 import 'platzi_trips_cupertino.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
+      title: 'Flutter Demo',
+      theme: ThemeData(
           // This is the theme of your application.
           //
           // Try running your application with "flutter run". You'll see the
@@ -22,42 +23,16 @@ class MyApp extends StatelessWidget {
           // or simply save your changes to "hot reload" in a Flutter IDE).
           // Notice that the counter didn't reset back to zero; the application
           // is not restarted.
-          primarySwatch: Colors.blue,
-        ),
-        home: const DemoTripsCupertino()
 
-        /*home: Scaffold(
-        appBar: AppBar(
-          title: Text("Hola Mundo"),
-        ),
-        body: Center(
-          child: Stack(
-            children: <Widget>[
-              Image.network('https://pbs.twimg.com/media/DoOQ8WWXgAASxyt.jpg:large'),
-              Center(
-                child: Container(
-                  color: Color.fromRGBO(0, 0, 0, 0.20),
-                  height: 50,
-                ),
-              ),
-              Center(
-                child: Text(
-                    "Yey, si se pudo",
-                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 30),
-                    textAlign: TextAlign.center
-                ),
-              )
-            ],
           ),
-        ),
-      )*/
-        //const MyHomePage(title: 'Flutter Demo Home Page'),
-        );
+      //home: PlatziTrips()
+      home: PlatziTripsCupertino(),
+    );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+  MyHomePage({Key key, this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -71,7 +46,7 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -106,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
+          // Column is also layout widget. It takes a list of children and
           // arranges them vertically. By default, it sizes itself to fit its
           // children horizontally, and tries to be as tall as its parent.
           //
@@ -122,20 +97,16 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
             Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+              'You have pushed the button this many times:',
+            )
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
